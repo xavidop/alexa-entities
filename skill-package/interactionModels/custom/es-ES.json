@@ -1,0 +1,43 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "entities demo",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "EntityIntent",
+          "slots": [
+            {
+              "name": "actor",
+              "type": "AMAZON.Actor"
+            }
+          ],
+          "samples": [
+            "dime mas cosas sobre el actor {actor}",
+            "dime mas cosas sobre {actor}",
+            "dime mas sobre {actor}",
+            "{actor}",
+            "quien es el actor {actor}"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "2"
+}
