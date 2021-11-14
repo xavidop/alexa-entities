@@ -4,7 +4,6 @@
         {
             "name": "Debug Alexa Skill (Node.js)",
             "type": "node",
-            "runtimeExecutable": "/Users/xavierportillaedo/.nvm/versions/node/v12.20.1/bin/node",
             "request": "launch",
             "program": "${command:ask.debugAdapterPath}",
             "args": [
