@@ -1,6 +1,6 @@
 # Alexa Entities
 
-In Alexa Live 2020, the Amazon Alexa Team launched a feature called Alexa Entities. This feature is aimed to use the Alexa Graph Knowledge to retrieve extra information from some Built-in Slots like places, actors, people, etc. After a year, this feature has been launched in more locales including Spanish, German, French and Italian. Wew! With Alexa Entities you don't need to access to external API to get some extra data. Each entity will provide an URL from the Alexa Knowledge graph where you can get that information.
+In Alexa Live 2020, the Amazon Alexa Team launched a feature called Alexa Entities. This feature is aimed to use the Alexa Graph Knowledge to retrieve extra information from some Built-in Slots like places, actors, people, etc. After a year, this feature has been launched in more locales including Spanish, German, French and Italian. Whew! With Alexa Entities, you don't need to access external API to get some extra data. Each entity will provide an URL from the Alexa Knowledge graph where you can get that information.
 
 <!-- TOC -->
 
@@ -26,9 +26,9 @@ Here you have the technologies used in this project
 
 ## Setting up our Alexa Skill
 
-As I pointed above, when we add a built-in slot in our interaction model, let's say `AMAZON.Actor` for example, and that slot has a successful match, we will receive on our AWS Lambda that this slot has been matched and also some extra info. That extra info will be a slot resolution with the Alexa Entity information. What is that information? It will be a link where we can fetch all the data from that Alexa Entity that has been matched. This link looks like this: `https://ld.amazonalexa.com/entities/v1/KmHs1W4gVQDE9HHq72eDLs'`
+As I pointed above, when we add a built-in slot in our interaction model, let's say `AMAZON.Actor` for example and that slot has a successful match, we will receive on our AWS Lambda that this slot has been matched and also some extra info. That extra info will be a slot resolution with the Alexa Entity information. What is that information? It will be a link where we can fetch all the data from that Alexa Entity that has been matched. This link looks like this: `https://ld.amazonalexa.com/entities/v1/KmHs1W4gVQDE9HHq72eDLs'`
 
-Because of this this, we need to set up our Alexa Skill backend. As we are going to fetch some data, the first step we need to do is add one package npm: `axios`
+Because of this, we need to set up our Alexa Skill backend. As we are going to fetch some data, the first step we need to do is add one package npm: `axios`
 
 To install this dependency you have to run these commands:
 1. For npm:
@@ -42,7 +42,7 @@ To install this dependency you have to run these commands:
 
 Axios is one of the most common libraries used in Node.js to make HTTP requests.
 
-With this packages installed/updated we have done good progress on this journey!! Let's continue with the following steps.
+With this package installed/updated we have done good progress on this journey!! Let's continue with the following steps.
 
 ## Alexa Entities Resolution
 
@@ -50,10 +50,10 @@ As it says the official documentation: "Each entity is a node linked to other en
 
 ![image](/img/knowledge_graph.jpeg)
 
-So let's go back to our example, the `AMAZON.Actor` one. Imagine that we have an slot called `actor` with that built-in type. When we request information of an actor and that actor is matched with the intent and also that actor exists on the Alexa Knowledge graph, we will get an URL to fetch its data.
+So let's go back to our example, the `AMAZON.Actor` one. Imagine that we have a slot called `actor` with that built-in type. When we request information of an actor and that actor is matched with the intent and also that actor exists on the Alexa Knowledge graph, we will get an URL to fetch its data.
 
-But, where can we find that URL? where is it located within the request? This is what Alexa calls **Slot Resolution**. The Slot Resolution is the way that Alexa tells you, as a developer that a slot has successfully matched and which is the authority that resolved the value of that slot. For instance a slot can be resolved by these 3 authorities ways:
-1. As a **Custom value**. For example a custom actor that we added manually.
+But, where can we find that URL? where is it located within the request? This is what Alexa calls **Slot Resolution**. The Slot Resolution is the way that Alexa tells you, as a developer that a slot has successfully matched and which is the authority that resolved the value of that slot. For instance, a slot can be resolved by these 3 authorities ways:
+1. As a **Custom value**. For example, a custom actor that we added manually.
 2. As a **Dynamic entity**. The custom values that we can add programmatically.
 3. As an **Alexa Entity**. When the actor exists in the Alexa Knowledge Graph.
 
@@ -61,14 +61,14 @@ The Slot resolution authorities and their resolutions can be found within the re
 
 ![image](/img/entity_resolution.png)
 
-In this example, when we fetch that data, we will see some properties like `birthdate`, `birthplace` or an array called `child`. This array contains the child or children of the actor that we have requested. In each object of the `child` array we will find a URL where we can fetch the data of that child. 
+In this example, when we fetch that data, we will see some properties like `birthdate`, `birthplace` or an array called `child`. This array contains the child or children of the actor that we have requested. In each object of the `child` array, we will find a URL where we can fetch the data of that child. 
 
 ![image](/img/entity_graph.png)
 
 It is important to note here that each entity has its own schema. All the types are explained [here](https://developer.amazon.com/en-US/docs/alexa/custom-skills/alexa-entities-reference.html#entity-classes-and-properties).
 ## Play with Alexa Entities
 
-Once we have the packages we need installed/upgraded and we understood the Alexa Entities resolution and how it works, we need modify our AWS Lambda to play with Alexa Entities.
+Once we have the packages we have installed/upgraded and we understood the Alexa Entities resolution and how it works, we need to modify our AWS Lambda to play with Alexa Entities.
 
 For this example I created one intent to get information of actors:
 
@@ -79,7 +79,7 @@ The actor is using the `AMAZON.Actor` built-in slot:
 ![image](/img/slot.png)
 
 
-Then we have a handler for this intent called `EntityIntentHandler`. The first thing that this handler going to do is to check if the slot `actor` is matched and if it is matched with and Alexa Entity:
+Then we have a handler for this intent called `EntityIntentHandler`. The first thing that this handler going to do is to check if the slot `actor` is matched and if it is matched with an Alexa Entity:
 
 ```javascript
 const actor = Alexa.getSlot(handlerInput.requestEnvelope, 'actor')
