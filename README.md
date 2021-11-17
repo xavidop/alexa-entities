@@ -46,7 +46,7 @@ With this package installed/updated we have done good progress on this journey!!
 
 ## Alexa Entities Resolution
 
-As it says the official documentation: "Each entity is a node linked to other entities in the knowledge graph". 
+As it is explained in the official documentation: "Each entity is a node linked to other entities in the knowledge graph". 
 
 ![image](/img/knowledge_graph.jpeg)
 
@@ -74,7 +74,7 @@ For this example I created one intent to get information of actors:
 
 ![image](/img/intent.png)
 
-The actor is using the `AMAZON.Actor` built-in slot:
+The actor slot is using the `AMAZON.Actor` built-in slot:
 
 ![image](/img/slot.png)
 
